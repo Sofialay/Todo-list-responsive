@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.first-page {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(161,140,209,1) 0%, rgba(251,194,235,1) 100%);
+    text-align: center;
+    .first-page-introduction {
+        padding: 20px 0;
+        .first-page-introduction-title {
+            font-family: 'Staatliches', cursive;
+            font-size: 50px;
+            color: #1c1c1c;
+            letter-spacing: 3px;
+            text-transform: capitalize;
+            margin: 10px 0;
+        }
+        .first-page-introduction-sub a {
+            color: white;
+        }
+    }
+    .first-page-img-and-button {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .first-page-img {
+            max-width: 90%;
+        }
+        .first-page-button {
+            width: 100px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #1c1c1c;
+            background-color: white;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            .first-page-button-link {
+                text-decoration: none;
+                color: #1c1c1c;
+            }
+        }
+    }
+}
+
+@media (min-width: 750px) {
+    .first-page {
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        justify-content: center;
+        .first-page-introduction {
+            .first-page-introduction-title {
+                font-size: 80px;
+            }
+            .first-page-introduction-sub {
+                font-size: 20px;
+            }
+        }
+        .first-page-img-and-button {
+            max-width: 40%;
+            .first-page-button {
+                width: 200px;
+                height: 50px;
+                &:hover {
+                    border: 3px solid white;
+                    background-color: transparent;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}
