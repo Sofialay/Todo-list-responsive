@@ -12,6 +12,7 @@ function ContentContainer({children}) {
 
     return (
         <div className="todos-container">
+            <h2>You have {`${todos.length}`} todos! </h2>
             <img className="todos-container-img" src={macbook}/>
             <button className="todos-container-btn" onClick={handleModal}>
                 New Task

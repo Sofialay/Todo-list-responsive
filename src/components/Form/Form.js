@@ -4,11 +4,13 @@ import TodosReducer, { TODO_ADD, TODO_DELETE, TODO_EDIT } from '../../reducers/T
 
 function Form({task, setTask, todos, dispatch, handleModal}) {
 //description y category, para añadir al dispatch
+//refactorizar UI
+// hacer que aparezca con clases el añadir task en vez de ternario
 //hacer eliminar y editar To do
 
 
     const handleSubmit = (e) => {
-        dispatch({type: TODO_ADD, payload: {id: Date.now(), task, completed: false}}) //dispatch 'activa' siempre a la funcion reducer
+        dispatch({type: TODO_ADD, payload: {id: Date.now(), check: false, task, completed: false}}) //dispatch 'activa' siempre a la funcion reducer
         handleModal()
       }
 
@@ -17,8 +19,8 @@ function Form({task, setTask, todos, dispatch, handleModal}) {
             <button className="form-todo-close" onClick={handleModal}>x</button>
             <label className="form-todo-label">Add a new task</label>
             <input className="form-todo-input" placeholder="New task" onChange={e => setTask(e.target.value)}/>
-            <label className="form-todo-label">Write a description</label>
-            <input className="form-todo-input-description" type="text" placeholder="Description" />
+            {/* <label className="form-todo-label">Write a description</label>
+            <input className="form-todo-input-description" type="text" placeholder="Description" /> */}
             <div className="form-todo-category">
                 <h3 className="form-todo-category-title">Choose task type</h3>
                 <button className="form-todo-category-btn work">Work</button>

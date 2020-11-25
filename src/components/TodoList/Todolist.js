@@ -3,7 +3,7 @@ import './Todolist.scss';
 import TodoContext from '../../context/TodoContext';
 
 function Todolist() {
-    const {task, setTask, todos, dispatch} = useContext(TodoContext);
+    const {task, todos} = useContext(TodoContext);
 
     if(task === "") {
         return(
@@ -13,7 +13,10 @@ function Todolist() {
         return(
                 todos.map((todo)=> {
                     return(
-                    <h1>{todo.task}</h1>
+                    <div>
+                        <input type="checkbox" defaultChecked={todo.check} onChange={todo.check ? todo.completed === true : todo.completed}/> 
+                        <h1>{todo.task}</h1>
+                    </div>
                     )
                 })
         )

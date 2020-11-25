@@ -1,6 +1,5 @@
 import './MainPage.scss'
 import React, {useState, useReducer} from 'react'
-import ModalUser from '../ModalUser/ModalUser';
 import ContentContainer from '../ContentContainer/ContentContainer'
 import Todolist from '../TodoList/Todolist'
 import Todosreducer from '../../reducers/Todosreducer';
