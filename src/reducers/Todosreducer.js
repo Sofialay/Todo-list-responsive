@@ -7,11 +7,6 @@ export default (state, action) => {
     switch(action.type) {
         case TODO_ADD:
             return [...state, action.payload]
-        case TODO_EDIT:
-            state.map(todo => {
-                if(todo.id === action.payload.editedId) todo.task = action.payload.newTask;
-            })
-            return state;
         case TODO_DELETE:
             return state.filter(todo => todo.id != action.payload.id);
         default:
