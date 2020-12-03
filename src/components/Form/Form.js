@@ -15,7 +15,8 @@ function Form({task, setTask, todos, dispatch, handleModal}) {
             <button className="form-todo-close" onClick={handleModal}>x</button>
             <label className="form-todo-label">Add a new task</label>
             <input className="form-todo-input" placeholder="New task" onChange={e => setTask(e.target.value)}/>
-            <div className="form-todo-category">
+            {/* add option */}
+            <div className="form-todo-category"> 
                 <h3 className="form-todo-category-title">Choose task type</h3>
                 <button className="form-todo-category-btn work">Work</button>
                 <button className="form-todo-category-btn personal">Personal</button>
