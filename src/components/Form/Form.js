@@ -1,6 +1,6 @@
 import React from 'react'
 import './Form.scss'
-import TodosReducer, { TODO_ADD, TODO_DELETE, TODO_EDIT } from '../../reducers/Todosreducer';
+import TodosReducer, {TODO_ADD} from '../../reducers/Todosreducer';
 
 function Form({task, setTask, todos, dispatch, handleModal}) {
 
