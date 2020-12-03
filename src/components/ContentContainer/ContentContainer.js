@@ -11,21 +11,24 @@ function ContentContainer({children}) {
     const handleModal = () => setOpenModal(!openModal);
 
     return (
-        <div className="todos-container">
-            <h2>You have {`${todos.length}`} todos! </h2>
-            <img className="todos-container-img" src={macbook}/>
-            <button className="todos-container-btn" onClick={handleModal}>
-                New Task
-            </button>
-           {children} 
-           {
+        <React.Fragment>
+        <div className="container">
+            <div className="todos-container">
+                <h2>You have {`${todos.length}`} todos! </h2>
+                <img className="todos-container-img" src={macbook}/>
+                <button className="todos-container-btn" onClick={handleModal}>
+                    New Task
+                </button>
+            </div>
+            {children} 
+        </div>
+        {
             openModal ? 
-            <Form task={task} setTask={setTask} todos={todos} dispatch={dispatch} handleModal={handleModal}/> // le paso por props para luego poder cerrar el form.
+            <Form task={task} setTask={setTask} todos={todos} dispatch={dispatch} handleModal={handleModal}/> 
             : 
             null
-            }
-        </div>
-
+        }
+    </React.Fragment>
     )
 }
 

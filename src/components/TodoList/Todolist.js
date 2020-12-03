@@ -1,9 +1,24 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import './Todolist.scss';
 import TodoContext from '../../context/TodoContext';
+import Todosreducer, {TODO_EDIT, TODO_DELETE} from '../../reducers/Todosreducer';
+import ModalEdit from '../ModalEdit/ModalEdit';
 
 function Todolist() {
-    const {task, todos} = useContext(TodoContext);
+    const {task, setTask, todos, dispatch} = useContext(TodoContext);
+    const [displayModalEdit, setDisplayModalEdit] = useState(false);
+    const [newTask, setNewTask] = useState("")
+
+    const handleDisplayModal = () => setDisplayModalEdit(!displayModalEdit)
+
+    const handleEditTask = (e) => {
+        handleDisplayModal()
+        dispatch({type: TODO_EDIT, payload:{todos, newTask, editedId: parseInt(e.target.id)}})
+    }
+
+    const deleteTask = (e) => {
+        dispatch({type: TODO_DELETE, payload:{id: e.target.id}})
+    }
 
     if(task === "") {
         return(
@@ -11,14 +26,32 @@ function Todolist() {
         )
     }else{
         return(
-                todos.map((todo)=> {
-                    return(
-                    <div>
-                        <input type="checkbox" defaultChecked={todo.check} onChange={todo.check ? todo.completed === true : todo.completed}/> 
-                        <h1>{todo.task}</h1>
-                    </div>
-                    )
-                })
+            <React.Fragment>
+            <div>
+                {
+                    todos.map((todo)=> {
+                        return(
+                        <div className="task" key={todo.id}>
+                            <input type="checkbox" defaultChecked={todo.check} /> 
+                            <h1>{todo.task}</h1>
+                            <div className="task-buttons">
+                                <button id={todo.id} onClick={handleEditTask}>edit</button>
+                                <button id={todo.id} onClick={deleteTask}>delete</button>
+                            </div>
+                        </div>
+                        )
+                    })
+                }
+            </div>
+            
+            {
+                displayModalEdit ?
+                <ModalEdit setNewTask={setNewTask} newTask={newTask} handleDisplayModal={handleDisplayModal}/>
+                :
+                null
+            }
+
+            </React.Fragment>
         )
     }
 }

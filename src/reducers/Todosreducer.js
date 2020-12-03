@@ -9,12 +9,11 @@ export default (state, action) => {
             return [...state, action.payload]
         case TODO_EDIT:
             state.map(todo => {
-                if(todo.id == action.payload.editedId) todo.task = action.payload.newTask;
+                if(todo.id === action.payload.editedId) todo.task = action.payload.newTask;
             })
-             return state;
+            return state;
         case TODO_DELETE:
-            //falta el filter del todo
-            return 
+            return state.filter(todo => todo.id != action.payload.id);
         default:
             return state;
     }
