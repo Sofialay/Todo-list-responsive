@@ -6,8 +6,7 @@ import Todosreducer from '../../reducers/Todosreducer';
 import TodoContext from '../../context/TodoContext';
 
 function MainPage() {
-    const [todos, dispatch] = useReducer(Todosreducer, []) // le paso el nombre de la funcion que va a modificar 
-    // 'todos', luego le paso el valor inicial de todos(en este caso un array vacio)
+    const [todos, dispatch] = useReducer(Todosreducer, []) 
     const [task, setTask] = useState("");
 
     return (

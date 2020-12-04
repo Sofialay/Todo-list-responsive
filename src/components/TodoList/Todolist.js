@@ -1,12 +1,17 @@
 import React, {useContext} from 'react'
 import './Todolist.scss';
 import TodoContext from '../../context/TodoContext';
-import Todosreducer, {TODO_DELETE} from '../../reducers/Todosreducer';
+import Todosreducer, {TODO_DELETE, UPDATE_CHECKED} from '../../reducers/Todosreducer';
 
 function Todolist() {
     const {task, setTask, todos, dispatch} = useContext(TodoContext);
+
     const deleteTask = (e) => {
         dispatch({type: TODO_DELETE, payload:{id: e.target.id}})
+    }
+
+    const updateChecked = (todo, check) => {
+        dispatch({type: UPDATE_CHECKED, check: !todo.check, id: todo.id})
     }
 
     if(task === "") {
@@ -15,14 +20,13 @@ function Todolist() {
         )
     }else{
         return(
-            <React.Fragment>
             <div>
                 {
                     todos.map((todo)=> {
                         return(
                         <div className="task" key={todo.id}>
-                            <input type="checkbox" defaultChecked={todo.check} /> 
-                            <h1>{todo.task}</h1>
+                            <input type="checkbox" defaultChecked={todo.check} onClick={(e) => updateChecked(todo, e.target.check)} /> 
+                            <h1 className={todo.check ? 'task-checked' : 'task-unchecked'}>{todo.task}</h1>
                             <div className="task-buttons">
                                 <button id={todo.id} onClick={deleteTask}>delete</button>
                             </div>
@@ -31,7 +35,6 @@ function Todolist() {
                     })
                 }
             </div>
-            </React.Fragment>
         )
     }
 }
